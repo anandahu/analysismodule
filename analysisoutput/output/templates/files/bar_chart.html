@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .dashboard-header h1 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .chart-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats-panel {
+            background: linear-gradient(135deg, #444e80 0%, #2c3e50 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #5397d6;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #abafc6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .nav-button {
+            background: #5397d6;
+            color: white;
+            padding: 0.8rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: #4477aa;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 119, 170, 0.3);
+        }
+
+        .nav-button i {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .chart-container {
+                padding: 1.5rem;
+            }
+
+            .stats-panel {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>Sentiment Analysis Dashboard</h1>
+        <p class="stat-label">Visualizing Text Sentiment Patterns</p>
+    </div>
+
+    <div class="chart-container">
+        {{ bar_chart_html|safe }}
+    </div>
+
+    <div class="stats-panel">
+        <div class="stat-item">
+            <div class="stat-value">{{ num_reviews }}</div>
+            <div class="stat-label">Analyzed Texts</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">{{ total_reviews }}</div>
+            <div class="stat-label">Total Reviews</div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="{% url 'pie_chart' %}" class="nav-button">
+            <i class="fas fa-chart-pie"></i>
+            View Pie Chart
+        </a>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>

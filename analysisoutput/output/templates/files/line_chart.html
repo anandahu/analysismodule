@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Line Chart</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h2>Line Chart</h2>
+    <div class="chart-container">
+        {{ line_chart_html|safe }}
+    </div>
+    <div class="navigation">
+        <a href="{% url 'bar_chart' %}">Next</a>
+    </div>
+</body>
+</html>

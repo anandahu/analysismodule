@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scatter Plot</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h2>Scatter Plot</h2>
+    <div class="chart-container">
+        {{ scatter_plot_html|safe }}
+    </div>
+    <div class="navigation">
+        <a href="{% url 'positive_words_chart' %}">Next</a>
+    </div>
+</body>
+</html>
